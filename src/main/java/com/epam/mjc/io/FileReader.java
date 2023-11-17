@@ -15,11 +15,11 @@ public class FileReader {
             profile.setEmail(getClearInfo(fileInputStream));
             profile.setPhone(Long.valueOf(getClearInfo(fileInputStream)));
         } catch (FileNotFoundException e) {
-            System.err.println("File not found");
+            throw new RuntimeException(e);
         } catch (IOException e) {
-            System.err.println("In&Out don't work (only till 7pm))");
+            System.err.println(e);
         } catch (NumberFormatException e) {
-            System.err.println("Nope... Numbers with chars");
+            System.out.println(e);
         }
         return profile;
     }
