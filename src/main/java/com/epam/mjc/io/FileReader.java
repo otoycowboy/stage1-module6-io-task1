@@ -15,24 +15,24 @@ public class FileReader {
             profile.setEmail(getClearInfo(fileInputStream));
             profile.setPhone(Long.valueOf(getClearInfo(fileInputStream)));
         } catch (FileNotFoundException e) {
-            System.out.println("File not found");
+            System.err.println("File not found");
         } catch (IOException e) {
-            System.out.println("In&Out don't work (only till 7pm))");
+            System.err.println("In&Out don't work (only till 7pm))");
         } catch (NumberFormatException e) {
-            System.out.println("Nope... Numbers with chars");
+            System.err.println("Nope... Numbers with chars");
         }
         return profile;
     }
 
     private String getClearInfo(FileInputStream stream) throws IOException {
-        String info = "";
+        StringBuilder info = new StringBuilder();
         int c;
         while ((c = stream.read()) !=  '\n') {
-            info += (char) c;
+            info.append((char) c);
         }
 
-        info = info.substring(info.lastIndexOf(':') + 1).trim();
-        return info;
+        info = new StringBuilder(info.substring(info.toString().lastIndexOf(':') + 1).trim());
+        return info.toString();
     }
 
 }
