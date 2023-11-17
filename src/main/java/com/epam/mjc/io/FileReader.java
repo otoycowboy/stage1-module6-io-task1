@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-
 public class FileReader {
 
     public Profile getDataFromFile(File file) {
